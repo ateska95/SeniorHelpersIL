@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#245c42" />
+  <meta name="description" content="SeniorHelpersIL offers simple Medicare and Illinois support." />
+  <title>SeniorHelpersIL</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" id="homeLink" href="#" aria-label="SeniorHelpersIL home">
+        <span class="brand-mark" aria-hidden="true">SH</span>
+        <span class="brand-copy">
+          <strong>SeniorHelpersIL</strong>
+          <small>Self-service Medicare help for Illinois.</small>
+        </span>
+      </a>
+      <div class="header-actions">
+        <button class="header-button" id="profileButton" type="button" hidden>My Profile</button>
+        <button class="header-button" id="restartButton" type="button">Start over</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section class="progress-wrap" aria-label="Progress">
+      <div class="progress-meta">
+        <span id="stepLabel">Step 1 of 4</span>
+        <span id="stepName">Choose help</span>
+      </div>
+      <div class="progress-track" aria-hidden="true">
+        <span id="progressFill"></span>
+      </div>
+    </section>
+
+    <section class="hero" aria-labelledby="pageTitle">
+      <span class="eyebrow">Simple Illinois support</span>
+      <h1 id="pageTitle">How can we help today?</h1>
+      <p id="pageIntro">Choose every area that matters.</p>
+    </section>
+
+    <section id="app" aria-live="polite"></section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <strong>SeniorHelpersIL</strong>
+      <span>Not a government website.</span>
+      <span>Enrollment depends on eligibility.</span>
+      <span>Demo data stays on this device.</span>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
