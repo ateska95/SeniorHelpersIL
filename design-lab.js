@@ -1,12 +1,12 @@
 (function(){
   const KEY='seniorHelpersIL-design-lab';
   const designs={
-    A:'Editorial / AARP-inspired',
-    B:'Civic / Medicare-inspired',
-    C:'Benefits / NCOA-inspired',
-    D:'Active aging / GetSetUp-inspired',
-    E:'Lifestyle / SilverSneakers-inspired',
-    F:'SeniorHelpersIL hybrid'
+    A:'Resource Directory / AARP-inspired',
+    B:'Quick Tasks / Medicare-inspired',
+    C:'Benefits Guide / NCOA-inspired',
+    D:'Guided Journey / GetSetUp-inspired',
+    E:'App Dashboard / SilverSneakers-inspired',
+    F:'Split Navigation / SeniorHelpersIL'
   };
 
   function setDesign(code){
@@ -29,11 +29,11 @@
     if(document.querySelector('.design-lab-switcher'))return;
     const panel=document.createElement('aside');
     panel.className='design-lab-switcher';
-    panel.setAttribute('aria-label','Compare website designs');
+    panel.setAttribute('aria-label','Compare website layouts');
     panel.innerHTML=`
-      <strong>Compare design</strong>
+      <strong>Compare layout</strong>
       <div class="design-lab-buttons">
-        ${Object.keys(designs).map(code=>`<button class="design-lab-button" type="button" data-design="${code}" aria-label="Design ${code}: ${designs[code]}" aria-pressed="false">${code}</button>`).join('')}
+        ${Object.keys(designs).map(code=>`<button class="design-lab-button" type="button" data-design="${code}" aria-label="Layout ${code}: ${designs[code]}" aria-pressed="false">${code}</button>`).join('')}
       </div>
       <span class="design-lab-name"></span>`;
     document.body.insertBefore(panel,document.body.firstChild);
