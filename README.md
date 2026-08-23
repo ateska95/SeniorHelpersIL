@@ -1,29 +1,27 @@
-# SeniorHelpersIL — Savings Roadmap MVP
+# SeniorHelpersIL
 
-Static HTML/CSS/JavaScript prototype.
+Illinois-focused senior help station and member profile MVP.
 
-## Current flow
+## Current experience
 
-1. Choose Medicare, Food, or Housing.
-2. Add an Illinois ZIP code.
-3. Complete a short Medicare checkup.
-4. Receive a personalized Action Plan.
-5. Follow a four-step Medicare savings roadmap.
-6. Save an optional returning-user profile.
-7. Add doctors and prescriptions after profile creation.
-
-## Results-page changes
-
-- A sticky **Save My Profile** action stays visible.
-- Medicare users see a simple savings roadmap.
-- Extra Help and Medicare Savings Programs appear first.
-- Plan comparison remains self-service first.
-- Illinois SHIP information appears at page bottom.
+- Five help areas: Food, Housing, Bills, Money & Benefits, and Healthcare.
+- Illinois ZIP, age, Medicare, and Medicaid intake.
+- Urgency ranking for every selected help area.
+- Color-coded Action Plan with category filters.
+- Illinois resource recommendations for food, housing, bills, benefits, and healthcare.
+- Optional member profile. Only a name is required.
+- Optional profile fields for ZIP, birthdate, phone, email, Medicare/Medicaid coverage, Extra Help/LIS, Medicare Savings Programs, current plan, doctors, hospitals, medications, pharmacy, household size, income range, and savings range.
+- Action Plan recommendations can be saved to a profile.
+- Saved programs can be marked Saved, Applied, Completed, or Not interested.
+- Members can email or text their Action Plan using their device's email or messaging app.
+- Medicare contact permission is stored separately from Action Plan sharing.
 
 ## Demo limitations
 
-Profiles use browser localStorage only.
-Email delivery is not connected.
-SunFire/Connecture enrollment is not connected.
-Scheduling is not connected.
-Production use requires secure backend infrastructure.
+This is a static front-end prototype using browser `localStorage`. It does not yet provide secure cloud accounts, authentication, cross-device recovery, server-side email/SMS delivery, enrollment integrations, encryption-at-rest, or production consent auditing.
+
+Before production use, replace browser storage with a secure backend and complete privacy, security, Medicare marketing, telemarketing/SMS, and consumer-health-data compliance review.
+
+## GitHub Pages
+
+The site is designed to run directly from the repository root using `index.html`, `styles.css`, and `app.js`.
