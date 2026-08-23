@@ -4,8 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#245c42" />
-  <meta name="description" content="SeniorHelpersIL offers simple Medicare and Illinois support." />
-  <title>SeniorHelpersIL</title>
+  <meta name="description" content="SeniorHelpersIL connects Illinois seniors with trusted local help." />
+  <title>SeniorHelpersIL | Illinois Senior Help Station</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -15,17 +15,23 @@
         <span class="brand-mark" aria-hidden="true">SH</span>
         <span class="brand-copy">
           <strong>SeniorHelpersIL</strong>
-          <small>Self-service Medicare help for Illinois.</small>
+          <small>Illinois help for older adults.</small>
         </span>
       </a>
       <div class="header-actions">
-        <button class="header-button" id="profileButton" type="button" hidden>My Profile</button>
+        <button class="header-button profile-header-button" id="profileButton" type="button">Create Profile</button>
         <button class="header-button" id="restartButton" type="button">Start over</button>
       </div>
     </div>
   </header>
 
   <main class="shell">
+    <section class="hero">
+      <span class="eyebrow">Illinois Senior Help Station</span>
+      <h1 id="pageTitle">What do you need help with?</h1>
+      <p id="pageIntro">Choose every area that matters.</p>
+    </section>
+
     <section class="progress-wrap" aria-label="Progress">
       <div class="progress-meta">
         <span id="stepLabel">Step 1 of 4</span>
@@ -36,21 +42,23 @@
       </div>
     </section>
 
-    <section class="hero" aria-labelledby="pageTitle">
-      <span class="eyebrow">Simple Illinois support</span>
-      <h1 id="pageTitle">How can we help today?</h1>
-      <p id="pageIntro">Choose every area that matters.</p>
-    </section>
-
     <section id="app" aria-live="polite"></section>
   </main>
+
+  <aside class="quick-help" aria-label="Quick help">
+    <div>
+      <strong>Need help finding services?</strong>
+      <span>Illinois 211 is available statewide.</span>
+    </div>
+    <a href="tel:211" class="quick-help-button">Call 211</a>
+  </aside>
 
   <footer class="site-footer">
     <div class="footer-inner">
       <strong>SeniorHelpersIL</strong>
       <span>Not a government website.</span>
-      <span>Enrollment depends on eligibility.</span>
-      <span>Demo data stays on this device.</span>
+      <span>Programs set their own eligibility.</span>
+      <span>Resources reviewed August 2026.</span>
     </div>
   </footer>
 
