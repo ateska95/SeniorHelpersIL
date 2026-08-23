@@ -35,6 +35,19 @@ Illinois-focused senior help station and member profile MVP.
 - Members can email or text their Action Plan using their device's email or messaging app.
 - Medicare contact permission is stored separately from Action Plan sharing.
 
+## A–F design lab
+
+The live site now contains six switchable visual systems using the **Compare design** control in the upper-left corner. The product flow and content stay identical while the design changes.
+
+- **A** — editorial, high-contrast nonprofit direction inspired by AARP design principles.
+- **B** — civic, utility-focused direction inspired by Medicare.gov.
+- **C** — warm benefits-navigation direction inspired by BenefitsCheckUp/NCOA.
+- **D** — modern active-aging direction inspired by GetSetUp.
+- **E** — energetic lifestyle direction inspired by SilverSneakers.
+- **F** — custom SeniorHelpersIL hybrid combining calm senior readability with a more distinctive brand feel.
+
+`DESIGN_STUDY.md` explains the comparison in more detail. No third-party logos, imagery, or exact layouts are copied.
+
 ## Recommendation engine
 
 `resource-engine.js` contains the current recommendation logic and trusted program destinations.
@@ -78,12 +91,15 @@ The profile exists to save progress and improve future recommendations.
 - `action-plan.css` — focused Action Plan layout
 - `competitive-experience.css` — competitive differentiation UI
 - `senior-experience.css` — senior readability and simplified interaction layer
+- `design-lab.css` — six A–F visual systems
 - `resource-engine.js` — recommendation logic
 - `app-v2.js` — application and profile flow
 - `action-plan-ui.js` — simplified category mini-journeys
 - `competitive-experience.js` — source trust, progress, and Medicare pathway
 - `senior-experience.js` — larger-text control, shorter copy, and one-topic-at-a-time behavior
+- `design-lab.js` — persistent A–F design selector
 - `COMPETITIVE_STRATEGY.md` — product benchmark and moat decisions
+- `DESIGN_STUDY.md` — visual benchmark and design comparison
 
 ## Demo limitations
 
