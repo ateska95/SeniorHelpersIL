@@ -1,0 +1,17 @@
+/* Third-pass results simplification for concierge mode */
+body[data-design="F"][data-view="plan"] .medicare-pathway{display:none!important}
+body[data-design="F"][data-view="plan"] .action-category{padding:0!important;border:0!important;background:transparent!important;box-shadow:none!important}
+body[data-design="F"][data-view="plan"] .action-category-header{display:none!important}
+body[data-design="F"][data-view="plan"] .primary-step{display:grid!important;grid-template-columns:1fr!important;gap:.75rem!important;padding:1.25rem!important;border:1px solid #c9d9d1!important;border-left:6px solid var(--accent,var(--green))!important;border-radius:18px!important;background:#fffdf8!important;box-shadow:0 8px 22px rgba(38,77,65,.08)!important}
+body[data-design="F"][data-view="plan"] .primary-step .rank{display:none!important}
+body[data-design="F"][data-view="plan"] .primary-step .recommendation-copy h3{margin:.4rem 0 .25rem;font-size:1.4rem}
+body[data-design="F"][data-view="plan"] .primary-step .recommendation-copy p{max-width:650px}
+body[data-design="F"][data-view="plan"] .primary-step .recommendation-actions{display:grid!important;grid-template-columns:minmax(0,1fr) auto!important;gap:.55rem!important;width:100%!important;min-width:0!important;margin-top:.4rem}
+body[data-design="F"][data-view="plan"] .primary-step .recommendation-actions>a.button{min-height:58px;font-size:1.02rem}
+body[data-design="F"][data-view="plan"] .more-steps{margin-top:.75rem;border:1px solid #d5e0da;border-radius:14px;background:#fff}
+body[data-design="F"][data-view="plan"] .more-steps>summary{min-height:58px;display:flex;align-items:center;padding:.75rem 1rem;color:#315f51;font-weight:900;cursor:pointer}
+body[data-design="F"][data-view="plan"] .secondary-steps{padding:0 .8rem .8rem}
+body[data-design="F"][data-view="plan"] .secondary-steps .recommendation{box-shadow:none!important}
+body[data-design="F"][data-view="plan"] .profile-prompt{position:static!important;margin-top:1.2rem}
+body[data-design="F"][data-view="plan"] .actions.split{margin-top:1rem}
+@media(max-width:760px){body[data-design="F"][data-view="plan"] .primary-step .recommendation-actions{grid-template-columns:1fr!important}}
