@@ -13,7 +13,7 @@ h3{font-size:1.25rem}
 .help-note{font-size:1rem}
 .button,.header-button,.quick-help-button{min-height:58px;padding:.75rem 1rem}
 .button.small{min-height:52px;font-size:1rem}
-.filter{min-height:52px;padding:.6rem .9rem;font-size:1rem}
+.filter{min-height:56px;padding:.7rem 1rem;font-size:1rem}
 input,select,textarea{min-height:58px;font-size:1rem}
 .field-help,.recommendation-copy small,.quick-help span,.footer-inner{font-size:.9rem}
 .recommendation-copy p{font-size:1rem}
@@ -22,13 +22,17 @@ input,select,textarea{min-height:58px;font-size:1rem}
 .text-size-button{white-space:nowrap}
 .simple-promise{max-width:860px;margin:0 0 1rem;padding:.8rem 1rem;border-left:5px solid var(--green);border-radius:10px;background:var(--soft);color:var(--green2);font-weight:850}
 .ranking-promise{padding:.7rem 1rem}
-.savings-stack{padding:1rem}
-.savings-stack-heading h2{margin:0 0 .7rem}
-.savings-stack-grid{gap:.55rem}
-.savings-chip{min-height:auto;padding:.65rem .8rem}
 .progress-summary{padding:.7rem 1rem}
 .medicare-pathway{padding:1rem}
 .medicare-steps li{min-height:auto}
+.plan-toolbar{padding:1rem;margin-bottom:1rem}
+.plan-toolbar .filter-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:.7rem}
+.plan-toolbar .filter{width:100%;border-radius:14px}
+.action-category{margin-top:.5rem}
+.action-category-header{padding:1rem 1.15rem}
+.action-category-header h2{margin:.15rem 0}
+.more-steps summary{min-height:58px;display:flex;align-items:center;padding:.8rem 1rem;font-size:1rem;font-weight:900}
+.profile-prompt{position:static;margin-top:1.25rem;margin-bottom:1rem}
 body.large-text{font-size:1.12rem}
 body.large-text .shell,body.large-text .header-inner,body.large-text .footer-inner{width:min(900px,calc(100% - 2rem))}
 body.large-text .help-card{min-height:145px}
@@ -40,4 +44,5 @@ body.large-text .button,body.large-text .header-button,body.large-text .quick-he
   .header-button{font-size:.9rem;padding:.55rem .7rem}
   .help-card{min-height:126px}
   .quick-help{width:calc(100% - 1rem)}
+  .plan-toolbar .filter-row{grid-template-columns:1fr}
 }
