@@ -11,15 +11,19 @@ Illinois-focused senior help station and member profile MVP.
 - Medicare and Medicaid answers are optional during routing.
 - No urgency questionnaire.
 - No age question before recommendations.
+- Large default type, large tap targets, and a simple Larger text control.
+- Short category descriptions written for fast scanning.
+- One selected help topic is shown at a time by default.
+- Large topic buttons switch between selected help areas.
 - Category-based Action Plan with one clear Start Here step per topic.
 - Secondary recommendations stay collapsed until requested.
+- Profile saving appears after the Action Plan instead of interrupting the answer.
 - Food recommendations distinguish local food access, SNAP, and senior meals.
 - Housing recommendations distinguish local navigation, affordable housing, and legal help.
 - Bills recommendations prioritize utility savings before broader local help.
 - Money & Benefits separates Illinois senior discounts, broader benefit screening, and money management.
 - Healthcare routes Medicare members through Medicare Savings Programs, Extra Help, coverage review, and independent SHIP support.
-- A cross-category Savings Stack highlights assistance worth checking before insurance changes.
-- Recommendation cards explain why each step appears and identify source type.
+- Resource cards use short source labels and identify official or community sources.
 - Action Plan steps can be marked complete without an account.
 - Same-device progress is stored locally.
 - Medicare members receive a savings-first self-service pathway before plan comparison.
@@ -47,6 +51,18 @@ The working thesis is simple:
 
 The site should stay self-service first. Human agent help is an escalation.
 
+## Senior UX principles
+
+The senior-facing experience is designed around a few rules:
+
+- Large readable text by default.
+- Plain language and short sentences.
+- One decision at a time.
+- One primary action per topic.
+- Results before profile creation.
+- Optional details stay collapsed.
+- No account required to see help.
+
 ## Product principle
 
 Give useful answers before asking for optional personal information.
@@ -61,10 +77,12 @@ The profile exists to save progress and improve future recommendations.
 - `styles.css` — core design system
 - `action-plan.css` — focused Action Plan layout
 - `competitive-experience.css` — competitive differentiation UI
+- `senior-experience.css` — senior readability and simplified interaction layer
 - `resource-engine.js` — recommendation logic
 - `app-v2.js` — application and profile flow
 - `action-plan-ui.js` — simplified category mini-journeys
-- `competitive-experience.js` — savings stack, source trust, progress, and Medicare pathway
+- `competitive-experience.js` — source trust, progress, and Medicare pathway
+- `senior-experience.js` — larger-text control, shorter copy, and one-topic-at-a-time behavior
 - `COMPETITIVE_STRATEGY.md` — product benchmark and moat decisions
 
 ## Demo limitations
