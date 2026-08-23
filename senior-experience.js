@@ -17,6 +17,7 @@
       localStorage.setItem(SIZE_KEY,String(next));
       applyTextSize();
     };
+    restartButton.style.display='none';
     applyTextSize();
   }
 
@@ -44,19 +45,25 @@
 
   const priorPlan=renderPlan;
   renderPlan=function(){
+    if(state.needs?.length&&(filter==='All'||!state.needs.includes(filter)))filter=state.needs[0];
     priorPlan();
     intro.textContent='Start with one step.';
+
+    document.querySelector('[data-filter="All"]')?.remove();
+    const toolbar=document.querySelector('.plan-toolbar');
+    if(toolbar){
+      if((state.needs||[]).length<=1)toolbar.remove();
+      else{
+        const strong=toolbar.querySelector('strong');
+        if(strong)strong.textContent='Choose a topic';
+        toolbar.querySelector('p')?.remove();
+      }
+    }
 
     const ranking=document.querySelector('.ranking-promise');
     if(ranking)ranking.innerHTML='<strong>Practical help comes first.</strong>';
 
-    const stack=document.querySelector('.savings-stack');
-    if(stack){
-      const heading=stack.querySelector('.savings-stack-heading');
-      if(heading)heading.innerHTML='<h2>Ways you may save</h2>';
-      stack.querySelector('.stack-note')?.remove();
-      stack.querySelectorAll('.savings-chip small').forEach(el=>el.remove());
-    }
+    document.querySelector('.savings-stack')?.remove();
 
     const progressBox=document.querySelector('.progress-summary');
     if(progressBox){
@@ -66,8 +73,11 @@
     }
 
     document.querySelectorAll('.recommendation-reason').forEach(reason=>reason.remove());
-    document.querySelectorAll('.recommendation-copy small').forEach(source=>{
-      source.textContent=source.textContent.replace(/^Source:\s*/i,'');
+    document.querySelectorAll('.action-category-header p').forEach(p=>p.remove());
+    document.querySelectorAll('.more-steps').forEach(block=>{
+      const category=block.closest('.action-category')?.querySelector('.eyebrow')?.textContent.trim()||'';
+      const summary=block.querySelector('summary');
+      if(summary)summary.textContent=`More ${category.toLowerCase()} help`;
     });
 
     const pathway=document.querySelector('.medicare-pathway');
@@ -75,6 +85,24 @@
       pathway.querySelector('.medicare-pathway-head p')?.remove();
       pathway.querySelectorAll('.medicare-steps small').forEach(el=>el.remove());
       pathway.querySelector('.medicare-note')?.remove();
+    }
+
+    const groups=document.querySelector('.action-plan-groups');
+    const profile=document.querySelector('.profile-prompt');
+    if(groups&&profile){
+      groups.insertAdjacentElement('afterend',profile);
+      const heading=profile.querySelector('h2');
+      const copy=profile.querySelector('p');
+      const button=profile.querySelector('.button');
+      if(member){
+        if(heading)heading.textContent='Plan saved.';
+        if(copy)copy.remove();
+        if(button)button.textContent='My Profile';
+      }else{
+        if(heading)heading.textContent='Save this plan.';
+        if(copy)copy.textContent='Only your name is required.';
+        if(button)button.textContent='Save plan';
+      }
     }
   };
 
