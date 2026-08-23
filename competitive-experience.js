@@ -21,6 +21,7 @@
     addSavingsStack();
     addSourceTrust();
     addProgressTracking();
+    addMedicarePathway();
   };
 
   function addSavingsStack(){
@@ -64,9 +65,7 @@
   function progressStore(){
     try{return JSON.parse(localStorage.getItem(PROGRESS_KEY))||{}}catch{return {}}
   }
-  function completedIds(){
-    return new Set(progressStore()[progressKey()]||[]);
-  }
+  function completedIds(){return new Set(progressStore()[progressKey()]||[])}
   function toggleCompleted(id){
     const store=progressStore();
     const set=new Set(store[progressKey()]||[]);
@@ -86,7 +85,6 @@
         <div><strong>${matchedDone?`${matchedDone} of ${all.length} steps done`:'Work through your plan at your pace'}</strong><span>${matchedDone?'Your progress stays on this device.':'Mark steps done. No account is needed.'}</span></div>
         <span class="progress-count">${matchedDone}/${all.length}</span>
       </section>`);
-
     document.querySelectorAll('.recommendation').forEach(card=>{
       const title=card.querySelector('h3')?.textContent.trim();
       const item=all.find(x=>x.title===title);
@@ -97,6 +95,38 @@
       actions.insertAdjacentHTML('beforeend',`<button class="button small completion-button ${isDone?'done':''}" type="button" data-complete="${item.id}">${isDone?'Done ✓':'Mark done'}</button>`);
     });
     document.querySelectorAll('[data-complete]').forEach(button=>button.onclick=()=>{toggleCompleted(button.dataset.complete);renderPlan()});
+  }
+
+  function addMedicarePathway(){
+    const medicare=(state.medicare||member?.coverage?.medicare)==='Yes';
+    if(!medicare||!state.needs.includes('Healthcare'))return;
+    const healthcareGroup=document.querySelector('.action-category.category-healthcare');
+    if(!healthcareGroup)return;
+    healthcareGroup.insertAdjacentHTML('beforebegin',`
+      <section class="medicare-pathway">
+        <div class="medicare-pathway-head">
+          <span class="eyebrow">Self-service Medicare path</span>
+          <h2>Change plans only when it helps.</h2>
+          <p>Start with savings programs. Compare coverage afterward.</p>
+        </div>
+        <ol class="medicare-steps">
+          <li><span>1</span><div><strong>Check assistance</strong><small>Review MSP and Extra Help first.</small></div></li>
+          <li><span>2</span><div><strong>Understand your current plan</strong><small>Know what already works for you.</small></div></li>
+          <li><span>3</span><div><strong>Compare total value</strong><small>Look beyond premiums and extra benefits.</small></div></li>
+          <li><span>4</span><div><strong>Enroll only if better</strong><small>Keeping your current plan is valid.</small></div></li>
+        </ol>
+        <div class="medicare-actions">
+          <a class="button" href="https://www.medicare.gov/plan-compare/" target="_blank" rel="noopener">Compare Medicare options</a>
+          <button class="button secondary" type="button" id="medicareHumanHelp">I want personal help</button>
+        </div>
+        <p class="medicare-note">A SeniorHelpersIL self-enrollment connection is planned.</p>
+      </section>`);
+    document.querySelector('#medicareHumanHelp')?.addEventListener('click',()=>{
+      if(!member){view='create';render();return;}
+      view='profile';render();
+      const panel=[...document.querySelectorAll('.profile-section')].find(x=>x.querySelector('summary')?.textContent.includes('Contact Choices'));
+      if(panel){panel.open=true;setTimeout(()=>panel.scrollIntoView({behavior:'smooth',block:'center'}),50)}
+    });
   }
 
   if(typeof step!=='undefined'&&typeof view!=='undefined'&&step===3&&view==='flow')renderPlan();
