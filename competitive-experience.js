@@ -1,4 +1,6 @@
 (function(){
+  const PROGRESS_KEY='seniorHelpersIL-action-progress-v1';
+
   const originalRenderNeeds=renderNeeds;
   renderNeeds=function(){
     originalRenderNeeds();
@@ -18,6 +20,7 @@
     originalRenderPlan();
     addSavingsStack();
     addSourceTrust();
+    addProgressTracking();
   };
 
   function addSavingsStack(){
@@ -51,9 +54,49 @@
       if(!source||card.querySelector('.source-trust'))return;
       const name=source.textContent.trim();
       const official=/Medicare\.gov|Illinois ABE|Illinois DCEO|Illinois Department|Illinois SHIP/i.test(name);
-      const label=official?'Official public source':'Trusted community source';
-      source.insertAdjacentHTML('afterend',`<span class="source-trust ${official?'official':'community'}">✓ ${label}</span>`);
+      source.insertAdjacentHTML('afterend',`<span class="source-trust ${official?'official':'community'}">✓ ${official?'Official public source':'Trusted community source'}</span>`);
     });
+  }
+
+  function progressKey(){
+    return [state.zip,(state.needs||[]).slice().sort().join(','),state.medicare||'',state.medicaid||''].join('|');
+  }
+  function progressStore(){
+    try{return JSON.parse(localStorage.getItem(PROGRESS_KEY))||{}}catch{return {}}
+  }
+  function completedIds(){
+    return new Set(progressStore()[progressKey()]||[]);
+  }
+  function toggleCompleted(id){
+    const store=progressStore();
+    const set=new Set(store[progressKey()]||[]);
+    set.has(id)?set.delete(id):set.add(id);
+    store[progressKey()]=[...set];
+    localStorage.setItem(PROGRESS_KEY,JSON.stringify(store));
+  }
+  function addProgressTracking(){
+    const groups=document.querySelector('.action-plan-groups');
+    if(!groups)return;
+    const all=recommendations();
+    const done=completedIds();
+    const matchedDone=all.filter(item=>done.has(item.id)).length;
+    const anchor=document.querySelector('.savings-stack')||groups;
+    anchor.insertAdjacentHTML('beforebegin',`
+      <section class="progress-summary">
+        <div><strong>${matchedDone?`${matchedDone} of ${all.length} steps done`:'Work through your plan at your pace'}</strong><span>${matchedDone?'Your progress stays on this device.':'Mark steps done. No account is needed.'}</span></div>
+        <span class="progress-count">${matchedDone}/${all.length}</span>
+      </section>`);
+
+    document.querySelectorAll('.recommendation').forEach(card=>{
+      const title=card.querySelector('h3')?.textContent.trim();
+      const item=all.find(x=>x.title===title);
+      const actions=card.querySelector('.recommendation-actions');
+      if(!item||!actions)return;
+      const isDone=done.has(item.id);
+      card.classList.toggle('completed-step',isDone);
+      actions.insertAdjacentHTML('beforeend',`<button class="button small completion-button ${isDone?'done':''}" type="button" data-complete="${item.id}">${isDone?'Done ✓':'Mark done'}</button>`);
+    });
+    document.querySelectorAll('[data-complete]').forEach(button=>button.onclick=()=>{toggleCompleted(button.dataset.complete);renderPlan()});
   }
 
   if(typeof step!=='undefined'&&typeof view!=='undefined'&&step===3&&view==='flow')renderPlan();
