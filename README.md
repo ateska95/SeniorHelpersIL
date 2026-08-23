@@ -5,8 +5,12 @@ Illinois-focused senior help station and member profile MVP.
 ## Current experience
 
 - Five help areas: Food, Housing, Bills, Money & Benefits, and Healthcare.
-- Illinois ZIP, age, Medicare, and Medicaid intake.
-- Urgency ranking for every selected help area.
+- Three-step journey: choose help, enter routing details, see the Action Plan.
+- Illinois ZIP is the only universal required routing field.
+- Medicare and Medicaid questions appear only for Healthcare.
+- Medicare and Medicaid answers are optional during routing.
+- No urgency questionnaire.
+- No age question before recommendations.
 - Color-coded Action Plan with category filters.
 - Illinois resource recommendations for food, housing, bills, benefits, and healthcare.
 - Optional member profile. Only a name is required.
@@ -16,6 +20,12 @@ Illinois-focused senior help station and member profile MVP.
 - Members can email or text their Action Plan using their device's email or messaging app.
 - Medicare contact permission is stored separately from Action Plan sharing.
 
+## Product principle
+
+Give useful answers before asking for optional personal information.
+
+The profile exists to save progress and improve future recommendations.
+
 ## Demo limitations
 
 This is a static front-end prototype using browser `localStorage`. It does not yet provide secure cloud accounts, authentication, cross-device recovery, server-side email/SMS delivery, enrollment integrations, encryption-at-rest, or production consent auditing.
@@ -24,4 +34,4 @@ Before production use, replace browser storage with a secure backend and complet
 
 ## GitHub Pages
 
-The site is designed to run directly from the repository root using `index.html`, `styles.css`, and `app.js`.
+The site runs directly from the repository root using `index.html`, `styles.css`, and `app.js`.
