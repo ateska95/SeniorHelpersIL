@@ -1,65 +1,78 @@
-# SeniorHelpersIL A–F Layout Study
+# SeniorHelpersIL A–F Interaction Study
 
-All six versions use the same SeniorHelpersIL questions, recommendation engine, senior-sized type, and content. The A–F control now changes **page structure, button mapping, navigation, card geometry, and visual hierarchy** — not just color.
+This study compares **six genuinely different ways to interact with the same SeniorHelpersIL product**. The recommendation engine, senior-sized text, profile logic, and Illinois resources stay the same. Navigation, button mapping, page geometry, and interaction style change.
 
-## A — Resource Directory / AARP-inspired
+## A — Public-service directory
 
-- Two-column directory of large service buttons.
-- Square, high-contrast resource cards.
-- Routing page splits location from optional details.
-- Action Plan uses a left topic column and right action column.
-- Best for: familiar nonprofit/community-resource feel.
+- Numbered service list instead of app tiles.
+- Flat rows and conventional controls.
+- Results read like a serious resource directory.
+- Best for familiarity and public-service credibility.
 
-## B — Quick Tasks / Medicare.gov-inspired
+## B — Control-center dashboard
 
-- Three-column quick-task dashboard.
-- Icon-first service tiles.
-- Routing information is grouped into clear service panels.
-- Action Plan topics behave like utility/task buttons.
-- Best for: obvious tasks and government-service familiarity.
+- Five large app-like tiles.
+- Icon-first navigation.
+- Sticky primary action.
+- Routing behaves like a utility panel.
+- Results behave like dashboard task cards.
+- Best for modern self-service and fast scanning.
 
-## C — Benefits Guide / BenefitsCheckUp-inspired
+## C — Playful tactile interface
 
-- One-column benefit chooser.
-- Wide, friendly buttons with a single dominant Continue action.
-- ZIP entry is centered and visually dominant.
-- Action Plan centers one large Start Here recommendation.
-- Best for: calm benefits discovery and low cognitive load.
+- Oversized rounded choices.
+- Large emoji/icons.
+- Physical-feeling buttons with heavy borders and shadows.
+- Bright, friendly layouts inspired by children’s educational interfaces.
+- Best for testing maximum visual clarity and a non-institutional feel.
 
-## D — Guided Journey / GetSetUp-inspired
+This is intentionally an extreme test, not a proposed final brand.
 
-- Asymmetric card layout with more visual personality.
-- Questions feel conversational rather than administrative.
-- Optional answers stack vertically instead of looking like a form grid.
-- Action Plan emphasizes one guided recommendation card.
-- Best for: contemporary, friendly digital-product feel.
+## D — Punk-zine collage
 
-## E — App Dashboard / SilverSneakers-inspired
+- Irregular card sizes and rotated panels.
+- High-contrast black, pink, yellow, mint, and lavender.
+- Sticker-like and poster-like controls.
+- Deliberately anti-corporate visual language.
+- Best for testing memorability and independence from insurance-company aesthetics.
 
-- Five icon-first dashboard tiles on larger screens.
-- Sticky primary Continue action.
-- Action Plan topic controls behave more like app navigation.
-- Primary recommendation appears as a large dashboard card.
-- Best for: energetic, capable, modern aging experience.
+This is intentionally provocative rather than conservative.
 
-## F — Split Navigation / SeniorHelpersIL
+## E — One-card-at-a-time wizard
 
-- Help categories form a vertical navigation rail.
-- The primary Continue area sits beside the choices.
-- Routing separates location from optional healthcare details.
-- Action Plan uses left-side topic context and right-side actions.
-- Best for: a custom SeniorHelpersIL desktop experience with clear separation between navigation and work.
+- Only one help category appears at a time.
+- The member chooses **Add this need** or moves forward.
+- ZIP, Medicare, and Medicaid appear as separate screens.
+- Results focus on one recommendation card.
+- Best for cognitive simplicity and one-question-at-a-time use.
+
+This version uses custom interaction logic rather than only CSS.
+
+## F — Concierge chat
+
+- The site speaks in short message bubbles.
+- Needs appear as quick replies.
+- Selected needs appear as the member’s response.
+- ZIP and healthcare questions continue as a conversation.
+- The Action Plan reads like advice from a helper rather than a results page.
+- Best for warmth and guided self-service.
+
+This version also uses custom interaction logic rather than only CSS.
 
 ## How to compare
 
-Use the **Compare layout A–F** control in the upper-left. Keep the same answers while switching versions.
+Use the **Compare interface A–F** control while keeping the same test answers.
 
-Focus on these questions:
+For each version, test all three stages:
+1. Pick Food + Bills + Healthcare.
+2. Enter ZIP 60625 and optional healthcare answers.
+3. Review the Food and Healthcare Action Plans.
 
-1. Which homepage makes it most obvious where to click?
-2. Which feels easiest for a 70–80 year old to use?
-3. Which looks trustworthy without feeling institutional?
-4. Which Action Plan makes the next step easiest to identify?
-5. Which layout could grow naturally into Medicare comparison, profile tools, doctors, and prescriptions later?
+Ask:
+- Which one immediately tells me where to click?
+- Which one would a 75-year-old understand without instruction?
+- Which feels trustworthy without feeling like an insurance company?
+- Which feels memorable?
+- Which interaction model should become the foundation, even if we later change its colors?
 
-The color palettes remain intentionally different so each layout feels complete, but the purpose of this study is now **structure first, color second**.
+The goal is not to choose a finished visual brand yet. The goal is to identify the interaction model worth refining.
