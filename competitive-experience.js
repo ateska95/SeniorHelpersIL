@@ -17,6 +17,7 @@
   renderPlan=function(){
     originalRenderPlan();
     addSavingsStack();
+    addSourceTrust();
   };
 
   function addSavingsStack(){
@@ -38,6 +39,21 @@
         </div>
         <p class="stack-note">SeniorHelpersIL looks beyond insurance coverage.</p>
       </section>`);
+  }
+
+  function addSourceTrust(){
+    const toolbar=document.querySelector('.plan-toolbar');
+    if(toolbar&&!document.querySelector('.ranking-promise')){
+      toolbar.insertAdjacentHTML('afterend',`<div class="ranking-promise"><strong>How we rank your steps</strong><span>Practical help comes first. Insurance payment is not used.</span></div>`);
+    }
+    document.querySelectorAll('.recommendation').forEach(card=>{
+      const source=card.querySelector('small');
+      if(!source||card.querySelector('.source-trust'))return;
+      const name=source.textContent.trim();
+      const official=/Medicare\.gov|Illinois ABE|Illinois DCEO|Illinois Department|Illinois SHIP/i.test(name);
+      const label=official?'Official public source':'Trusted community source';
+      source.insertAdjacentHTML('afterend',`<span class="source-trust ${official?'official':'community'}">✓ ${label}</span>`);
+    });
   }
 
   if(typeof step!=='undefined'&&typeof view!=='undefined'&&step===3&&view==='flow')renderPlan();
