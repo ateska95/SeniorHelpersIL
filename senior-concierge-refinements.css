@@ -1,0 +1,25 @@
+/* Second-pass decluttering for the senior concierge */
+body[data-design="F"][data-view="needs"] .hero,
+body[data-design="F"][data-view="routing"] .hero,
+body[data-design="F"][data-view="plan"] .hero,
+body[data-design="F"][data-view="needs"] .progress-wrap,
+body[data-design="F"][data-view="routing"] .progress-wrap,
+body[data-design="F"][data-view="plan"] .progress-wrap,
+body[data-design="F"][data-view="needs"] .simple-promise,
+body[data-design="F"][data-view="plan"] .plan-toolbar,
+body[data-design="F"][data-view="plan"] .ranking-promise,
+body[data-design="F"] .quick-help{display:none!important}
+
+body[data-design="F"][data-view="needs"] .shell,
+body[data-design="F"][data-view="routing"] .shell,
+body[data-design="F"][data-view="plan"] .shell{padding-top:1.2rem}
+body[data-design="F"][data-view="plan"] .action-plan-groups{margin-top:1rem}
+body[data-design="F"][data-view="plan"] .action-category-header{padding-top:.9rem}
+body[data-design="F"] .site-footer{padding-bottom:2.5rem}
+body[data-design="F"] .design-lab-switcher{opacity:.92}
+
+@media(max-width:760px){
+  body[data-design="F"][data-view="needs"] .shell,
+  body[data-design="F"][data-view="routing"] .shell,
+  body[data-design="F"][data-view="plan"] .shell{padding-top:.65rem}
+}
