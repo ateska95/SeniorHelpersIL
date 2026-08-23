@@ -1,79 +1,65 @@
-# SeniorHelpersIL A–F Design Study
+# SeniorHelpersIL A–F Layout Study
 
-All six versions use the same product flow, recommendation engine, senior-sized controls, and copy. Only the visual system changes. Use the **Compare design** control on the page to switch instantly.
+All six versions use the same SeniorHelpersIL questions, recommendation engine, senior-sized type, and content. The A–F control now changes **page structure, button mapping, navigation, card geometry, and visual hierarchy** — not just color.
 
-## A — Editorial / AARP-inspired
+## A — Resource Directory / AARP-inspired
 
-Borrowed principles:
-- High contrast
-- Strong editorial typography
-- Red/black/neutral palette
-- Squarer cards and buttons
-- Clear visual hierarchy
+- Two-column directory of large service buttons.
+- Square, high-contrast resource cards.
+- Routing page splits location from optional details.
+- Action Plan uses a left topic column and right action column.
+- Best for: familiar nonprofit/community-resource feel.
 
-SeniorHelpersIL does not copy AARP branding, assets, or layouts.
+## B — Quick Tasks / Medicare.gov-inspired
 
-## B — Civic / Medicare.gov-inspired
+- Three-column quick-task dashboard.
+- Icon-first service tiles.
+- Routing information is grouped into clear service panels.
+- Action Plan topics behave like utility/task buttons.
+- Best for: obvious tasks and government-service familiarity.
 
-Borrowed principles:
-- Government-service clarity
-- Blue utility palette
-- Calm rectangular cards
-- Obvious task-oriented buttons
-- Structured, dependable feel
+## C — Benefits Guide / BenefitsCheckUp-inspired
 
-SeniorHelpersIL remains an independent, non-government service.
+- One-column benefit chooser.
+- Wide, friendly buttons with a single dominant Continue action.
+- ZIP entry is centered and visually dominant.
+- Action Plan centers one large Start Here recommendation.
+- Best for: calm benefits discovery and low cognitive load.
 
-## C — Benefits / BenefitsCheckUp + NCOA-inspired
+## D — Guided Journey / GetSetUp-inspired
 
-Borrowed principles:
-- Warm benefits-navigation feel
-- Teal and cream palette
-- Soft rounded cards
-- Friendly, reassuring presentation
-- Assistance-first visual hierarchy
+- Asymmetric card layout with more visual personality.
+- Questions feel conversational rather than administrative.
+- Optional answers stack vertically instead of looking like a form grid.
+- Action Plan emphasizes one guided recommendation card.
+- Best for: contemporary, friendly digital-product feel.
 
-This direction is especially aligned with SeniorHelpersIL's low-income assistance mission.
+## E — App Dashboard / SilverSneakers-inspired
 
-## D — Active aging / GetSetUp-inspired
+- Five icon-first dashboard tiles on larger screens.
+- Sticky primary Continue action.
+- Action Plan topic controls behave more like app navigation.
+- Primary recommendation appears as a large dashboard card.
+- Best for: energetic, capable, modern aging experience.
 
-Borrowed principles:
-- Modern digital-platform feel
-- Purple/lavender palette
-- Friendly rounded geometry
-- Brighter accent color
-- Optimistic, contemporary tone
+## F — Split Navigation / SeniorHelpersIL
 
-This version deliberately avoids making senior services look institutional.
-
-## E — Lifestyle / SilverSneakers-inspired
-
-Borrowed principles:
-- Energetic blue palette
-- Bright, positive presentation
-- Curved visual forms
-- Strong call-to-action buttons
-- Active, capable view of aging
-
-This is the most energetic of the six directions.
-
-## F — SeniorHelpersIL hybrid
-
-A custom synthesis rather than a direct reference:
-- Calm sage and warm cream
-- Editorial heading typography
-- One-column help choices
-- Large touch targets
-- Restrained card styling
-- High readability without looking clinical
-
-This is the current default design and represents the design system developed specifically for SeniorHelpersIL.
+- Help categories form a vertical navigation rail.
+- The primary Continue area sits beside the choices.
+- Routing separates location from optional healthcare details.
+- Action Plan uses left-side topic context and right-side actions.
+- Best for: a custom SeniorHelpersIL desktop experience with clear separation between navigation and work.
 
 ## How to compare
 
-Keep the same answers while switching A–F. Compare:
-1. Which version feels easiest to understand immediately?
-2. Which feels trustworthy without feeling institutional?
-3. Which feels designed for an older adult without looking old-fashioned?
-4. Which makes the primary action easiest to find?
-5. Which would you be comfortable building the long-term brand around?
+Use the **Compare layout A–F** control in the upper-left. Keep the same answers while switching versions.
+
+Focus on these questions:
+
+1. Which homepage makes it most obvious where to click?
+2. Which feels easiest for a 70–80 year old to use?
+3. Which looks trustworthy without feeling institutional?
+4. Which Action Plan makes the next step easiest to identify?
+5. Which layout could grow naturally into Medicare comparison, profile tools, doctors, and prescriptions later?
+
+The color palettes remain intentionally different so each layout feels complete, but the purpose of this study is now **structure first, color second**.
