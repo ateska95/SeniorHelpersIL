@@ -73,6 +73,9 @@
     }
 
     document.querySelectorAll('.recommendation-reason').forEach(reason=>reason.remove());
+    document.querySelectorAll('.source-trust').forEach(label=>{
+      label.textContent=label.classList.contains('official')?'✓ Official':'✓ Community';
+    });
     document.querySelectorAll('.action-category-header p').forEach(p=>p.remove());
     document.querySelectorAll('.more-steps').forEach(block=>{
       const category=block.closest('.action-category')?.querySelector('.eyebrow')?.textContent.trim()||'';
