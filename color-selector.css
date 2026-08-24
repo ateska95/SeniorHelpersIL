@@ -19,6 +19,9 @@ body[data-palette="plum"]{--theme-primary:#6e5a78;--theme-dark:#46394e;--theme-s
 body[data-palette="teal"]{--theme-primary:#477577;--theme-dark:#294b4c;--theme-soft:#edf5f4;--theme-soft-2:#e1eceb;--theme-surface:#fffdf9;--theme-page:#f1f5f2;--theme-border:#c9d9d6;--theme-muted:#5d706f;--theme-accent:#dfd1a0;--theme-accent-ink:#324f50}
 body[data-palette="terracotta"]{--theme-primary:#8a6252;--theme-dark:#5b4036;--theme-soft:#f8efea;--theme-soft-2:#f1e3dc;--theme-surface:#fffdfa;--theme-page:#f7f1eb;--theme-border:#dfd0c8;--theme-muted:#756760;--theme-accent:#e5cf99;--theme-accent-ink:#5b4036}
 
+/* Feed the selected palette back into the original design tokens too. */
+body[data-palette]{--green:var(--theme-primary);--green2:var(--theme-dark);--soft:var(--theme-soft);--ink:var(--theme-dark);--muted:var(--theme-muted);--border:var(--theme-border);--surface:var(--theme-surface);--health:var(--theme-primary);--healthsoft:var(--theme-soft)}
+
 /* Apply palette consistently across the current concierge/product experience. */
 body{background:linear-gradient(var(--theme-soft),var(--theme-surface) 34rem)!important;color:var(--theme-dark)}
 .site-header{border-bottom-color:var(--theme-border)!important;background:color-mix(in srgb,var(--theme-surface) 96%,transparent)!important}
