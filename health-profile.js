@@ -8,8 +8,9 @@
   const stages=['Current plan','Doctors','Prescriptions','Pharmacies','Hospitals','What matters','Review'];
   const planTypes=['Medicare Advantage','Original Medicare','Original Medicare + Medigap','Original Medicare + Part D','Other coverage','No current Medicare plan','Not sure'];
   const priorityOptions=['Keep my doctors','Keep my hospital','Lower prescription costs','Lowest total yearly cost','Low monthly premium','Broad doctor network','Dental benefits','Vision benefits','Hearing benefits','OTC or grocery allowance','Transportation','Fitness benefits','Out-of-state or travel flexibility'];
+  const lineBreak=String.fromCharCode(10);
 
-  function lines(value){return String(value||'').split(/\n|,/).map(x=>x.trim()).filter(Boolean)}
+  function lines(value){return String(value||'').split(lineBreak).flatMap(part=>part.split(',')).map(x=>x.trim()).filter(Boolean)}
   function clone(value){return JSON.parse(JSON.stringify(value))}
   function ensureHealthProfile(){
     member.coverage=member.coverage||{};
@@ -32,10 +33,10 @@
     member.coverage=member.coverage||{};
     member.health=member.health||{};
     member.coverage.plan=hp.currentPlan.name||hp.currentPlan.type||'';
-    member.health.doctors=hp.doctors.map(x=>[x.name,x.specialty].filter(Boolean).join(' — ')).join('\n');
-    member.health.drugs=hp.drugs.map(x=>[x.name,x.dose,x.frequency,x.quantity?`Qty ${x.quantity}`:''].filter(Boolean).join(' — ')).join('\n');
+    member.health.doctors=hp.doctors.map(x=>[x.name,x.specialty].filter(Boolean).join(' — ')).join(lineBreak);
+    member.health.drugs=hp.drugs.map(x=>[x.name,x.dose,x.frequency,x.quantity?`Qty ${x.quantity}`:''].filter(Boolean).join(' — ')).join(lineBreak);
     member.health.pharmacy=hp.pharmacies.map(x=>x.name).filter(Boolean).join(', ');
-    member.health.hospitals=hp.hospitals.map(x=>x.name).filter(Boolean).join('\n');
+    member.health.hospitals=hp.hospitals.map(x=>x.name).filter(Boolean).join(lineBreak);
   }
   function commitDraft(){
     if(!healthDraft)return;
@@ -43,7 +44,7 @@
     mirrorHealthProfile();
     saveMember();
   }
-  function sectionCount(hp){
+  function sectionFlags(hp){
     return [
       Boolean(hp.currentPlan.type||hp.currentPlan.name),
       hp.doctors.length>0,
@@ -51,8 +52,10 @@
       hp.pharmacies.length>0,
       hp.hospitals.length>0,
       hp.priorities.length>0||Boolean(hp.otherNeeds)
-    ].filter(Boolean).length;
+    ];
   }
+  function sectionCount(hp){return sectionFlags(hp).filter(Boolean).length}
+  function firstIncompleteStage(hp){const index=sectionFlags(hp).findIndex(Boolean);return index===-1?0:sectionFlags(hp).findIndex(x=>!x)}
   function startHealth(stage=0){
     healthDraft=clone(ensureHealthProfile());
     healthStage=stage;
@@ -97,10 +100,9 @@
       <div class="health-entry-form"><label>Doctor name<input id="doctorName" placeholder="Doctor name"></label><label>Specialty <span>(optional)</span><input id="doctorSpecialty" placeholder="Primary care, cardiology, etc."></label><button type="button" class="button secondary" id="addDoctor">+ Add doctor</button></div>
       ${stageActions()}
     </div>`);
-    function addDoctor(){const name=document.querySelector('#doctorName').value.trim();if(!name)return false;healthDraft.doctors.push({name,specialty:document.querySelector('#doctorSpecialty').value.trim()});commitDraft();renderDoctors();return true}
-    document.querySelector('#addDoctor').onclick=addDoctor;
+    document.querySelector('#addDoctor').onclick=()=>{const name=document.querySelector('#doctorName').value.trim();if(!name)return;healthDraft.doctors.push({name,specialty:document.querySelector('#doctorSpecialty').value.trim()});commitDraft();renderDoctors();};
     app.querySelectorAll('[data-remove-doctor]').forEach(button=>button.onclick=()=>{healthDraft.doctors.splice(Number(button.dataset.removeDoctor),1);commitDraft();renderDoctors();});
-    bindStageActions(()=>{const name=document.querySelector('#doctorName').value.trim();if(name){healthDraft.doctors.push({name,specialty:document.querySelector('#doctorSpecialty').value.trim()});}nextStage();});
+    bindStageActions(()=>{const name=document.querySelector('#doctorName').value.trim();if(name)healthDraft.doctors.push({name,specialty:document.querySelector('#doctorSpecialty').value.trim()});nextStage();});
   }
 
   function drugItem(x,i){const detail=[x.dose,x.frequency,x.quantity?`Qty ${x.quantity}`:''].filter(Boolean).join(' · ');return `<div class="health-list-item"><div><strong>${esc(x.name)}</strong>${detail?`<small>${esc(detail)}</small>`:''}</div><button type="button" class="health-remove" data-remove-drug="${i}">Remove</button></div>`}
@@ -112,8 +114,7 @@
       <details class="concierge-why"><summary>Why do prescriptions matter?</summary><p>Drug coverage and estimated yearly prescription costs can vary by Medicare plan.</p></details>
       ${stageActions()}
     </div>`);
-    function addDrug(){const name=document.querySelector('#drugName').value.trim();if(!name)return false;healthDraft.drugs.push({name,dose:document.querySelector('#drugDose').value.trim(),frequency:document.querySelector('#drugFrequency').value.trim(),quantity:document.querySelector('#drugQuantity').value.trim()});commitDraft();renderDrugs();return true}
-    document.querySelector('#addDrug').onclick=addDrug;
+    document.querySelector('#addDrug').onclick=()=>{const name=document.querySelector('#drugName').value.trim();if(!name)return;healthDraft.drugs.push({name,dose:document.querySelector('#drugDose').value.trim(),frequency:document.querySelector('#drugFrequency').value.trim(),quantity:document.querySelector('#drugQuantity').value.trim()});commitDraft();renderDrugs();};
     app.querySelectorAll('[data-remove-drug]').forEach(button=>button.onclick=()=>{healthDraft.drugs.splice(Number(button.dataset.removeDrug),1);commitDraft();renderDrugs();});
     bindStageActions(()=>{const name=document.querySelector('#drugName').value.trim();if(name)healthDraft.drugs.push({name,dose:document.querySelector('#drugDose').value.trim(),frequency:document.querySelector('#drugFrequency').value.trim(),quantity:document.querySelector('#drugQuantity').value.trim()});nextStage();});
   }
@@ -127,8 +128,7 @@
       <details class="concierge-why"><summary>Why does pharmacy matter?</summary><p>Some plans have preferred in-network pharmacies that may lower prescription costs.</p></details>
       ${stageActions()}
     </div>`);
-    function addPharmacy(){const name=document.querySelector('#pharmacyName').value.trim();if(!name)return false;healthDraft.pharmacies.push({name,type:document.querySelector('#pharmacyType').value});commitDraft();renderPharmacies();return true}
-    document.querySelector('#addPharmacy').onclick=addPharmacy;
+    document.querySelector('#addPharmacy').onclick=()=>{const name=document.querySelector('#pharmacyName').value.trim();if(!name)return;healthDraft.pharmacies.push({name,type:document.querySelector('#pharmacyType').value});commitDraft();renderPharmacies();};
     app.querySelectorAll('[data-remove-pharmacy]').forEach(button=>button.onclick=()=>{healthDraft.pharmacies.splice(Number(button.dataset.removePharmacy),1);commitDraft();renderPharmacies();});
     bindStageActions(()=>{const name=document.querySelector('#pharmacyName').value.trim();if(name)healthDraft.pharmacies.push({name,type:document.querySelector('#pharmacyType').value});nextStage();});
   }
@@ -141,8 +141,7 @@
       <div class="health-entry-form"><label class="full">Hospital or health system<input id="hospitalName" placeholder="Hospital or health system"></label><button type="button" class="button secondary" id="addHospital">+ Add hospital</button></div>
       ${stageActions()}
     </div>`);
-    function addHospital(){const name=document.querySelector('#hospitalName').value.trim();if(!name)return false;healthDraft.hospitals.push({name});commitDraft();renderHospitals();return true}
-    document.querySelector('#addHospital').onclick=addHospital;
+    document.querySelector('#addHospital').onclick=()=>{const name=document.querySelector('#hospitalName').value.trim();if(!name)return;healthDraft.hospitals.push({name});commitDraft();renderHospitals();};
     app.querySelectorAll('[data-remove-hospital]').forEach(button=>button.onclick=()=>{healthDraft.hospitals.splice(Number(button.dataset.removeHospital),1);commitDraft();renderHospitals();});
     bindStageActions(()=>{const name=document.querySelector('#hospitalName').value.trim();if(name)healthDraft.hospitals.push({name});nextStage();});
   }
@@ -222,7 +221,7 @@
         <div class="concierge-actions full"><button class="button">Save basic details</button></div></form></details>
       <details class="concierge-more profile-programs"><summary>Saved programs (${saved.length})</summary><div class="concierge-more-list">${saved.length?saved.map(item=>`<div class="saved-program"><strong>${esc(item.title)}</strong><select data-health-status="${esc(item.id)}">${['Recommended','Saved','Applied','Completed','Not interested'].map(s=>`<option ${item.status===s?'selected':''}>${s}</option>`).join('')}</select></div>`).join(''):'<p>No programs saved yet.</p>'}</div></details>
       <div class="concierge-plan-footer"><button type="button" class="concierge-link-button" id="healthProfileBack">← Back</button></div>`);
-    document.querySelector('#startHealthProfile').onclick=()=>startHealth(filled===6?6:0);
+    document.querySelector('#startHealthProfile').onclick=()=>startHealth(filled===6?6:firstIncompleteStage(hp));
     app.querySelectorAll('[data-health-jump]').forEach(button=>button.onclick=()=>startHealth(Number(button.dataset.healthJump)));
     document.querySelector('#basicProfileForm').onsubmit=e=>{e.preventDefault();member.name=document.querySelector('#hpName').value.trim()||member.name;member.zip=document.querySelector('#hpZip').value.trim();member.email=document.querySelector('#hpEmail').value.trim();member.phone=document.querySelector('#hpPhone').value.trim();saveMember();renderProfile();};
     app.querySelectorAll('[data-health-status]').forEach(select=>select.onchange=()=>{const item=member.savedPrograms.find(x=>x.id===select.dataset.healthStatus);if(item)item.status=select.value;saveMember();});
