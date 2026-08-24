@@ -1,0 +1,51 @@
+/* SeniorHelpersIL color selector: calm, high-contrast palettes */
+:root{
+  --theme-primary:#315f51;
+  --theme-dark:#193c34;
+  --theme-soft:#edf4ef;
+  --theme-soft-2:#e5f0ea;
+  --theme-surface:#fffdf8;
+  --theme-page:#f4f1e9;
+  --theme-border:#cbd8d0;
+  --theme-muted:#5d6b66;
+  --theme-accent:#e6d39b;
+  --theme-accent-ink:#193c34;
+}
+
+body[data-palette="sage"]{--theme-primary:#315f51;--theme-dark:#193c34;--theme-soft:#edf4ef;--theme-soft-2:#e5f0ea;--theme-surface:#fffdf8;--theme-page:#f4f1e9;--theme-border:#cbd8d0;--theme-muted:#5d6b66;--theme-accent:#e6d39b;--theme-accent-ink:#193c34}
+body[data-palette="harbor"]{--theme-primary:#3f6f8a;--theme-dark:#203f52;--theme-soft:#edf5f8;--theme-soft-2:#e2eef3;--theme-surface:#fff;--theme-page:#f2f6f8;--theme-border:#c8d9e1;--theme-muted:#5d6f79;--theme-accent:#e8d9a8;--theme-accent-ink:#294556}
+body[data-palette="navy-sand"]{--theme-primary:#4a6279;--theme-dark:#27394a;--theme-soft:#eef1f4;--theme-soft-2:#e3e9ee;--theme-surface:#fffdf8;--theme-page:#f3eee5;--theme-border:#cfd5d8;--theme-muted:#626b70;--theme-accent:#dcc89f;--theme-accent-ink:#354553}
+body[data-palette="plum"]{--theme-primary:#6e5a78;--theme-dark:#46394e;--theme-soft:#f3eef5;--theme-soft-2:#ebe2ef;--theme-surface:#fffdfb;--theme-page:#f5f1f3;--theme-border:#d8cddd;--theme-muted:#6d6570;--theme-accent:#dfcfa9;--theme-accent-ink:#4c4052}
+body[data-palette="teal"]{--theme-primary:#477577;--theme-dark:#294b4c;--theme-soft:#edf5f4;--theme-soft-2:#e1eceb;--theme-surface:#fffdf9;--theme-page:#f1f5f2;--theme-border:#c9d9d6;--theme-muted:#5d706f;--theme-accent:#dfd1a0;--theme-accent-ink:#324f50}
+body[data-palette="terracotta"]{--theme-primary:#8a6252;--theme-dark:#5b4036;--theme-soft:#f8efea;--theme-soft-2:#f1e3dc;--theme-surface:#fffdfa;--theme-page:#f7f1eb;--theme-border:#dfd0c8;--theme-muted:#756760;--theme-accent:#e5cf99;--theme-accent-ink:#5b4036}
+
+/* Apply palette consistently across the current concierge/product experience. */
+body{background:linear-gradient(var(--theme-soft),var(--theme-surface) 34rem)!important;color:var(--theme-dark)}
+.site-header{border-bottom-color:var(--theme-border)!important;background:color-mix(in srgb,var(--theme-surface) 96%,transparent)!important}
+.brand{color:var(--theme-dark)!important}.brand-mark,.profile-header-button{background:var(--theme-primary)!important;border-color:var(--theme-primary)!important}.brand-copy small,.footer-inner{color:var(--theme-muted)!important}
+.header-button{border-color:var(--theme-border)!important;color:var(--theme-dark)!important;background:var(--theme-surface)!important}.profile-header-button{color:#fff!important}
+.compare-medicare-header{background:var(--theme-dark)!important;border-color:var(--theme-dark)!important;color:#fff!important}
+.button{background:var(--theme-primary)!important;border-color:var(--theme-primary)!important;color:#fff!important}.button:hover{background:var(--theme-dark)!important;border-color:var(--theme-dark)!important}.button.secondary{background:var(--theme-surface)!important;border-color:var(--theme-border)!important;color:var(--theme-dark)!important}
+.site-footer{background:var(--theme-surface)!important;border-top-color:var(--theme-border)!important}.footer-inner strong{color:var(--theme-dark)!important}
+.eyebrow{color:var(--theme-primary)!important}h1,h2,h3{color:var(--theme-dark)!important}
+
+.concierge-card,.plan-card,.plan-detail-panel,.health-profile-card,.company-story,.medicare-program-card{background:var(--theme-surface)!important;border-color:var(--theme-border)!important}
+.concierge-head{background:var(--theme-soft)!important;border-color:var(--theme-border)!important}.concierge-mark{background:var(--theme-primary)!important}.concierge-id strong,.concierge-message strong,.concierge-review-row strong{color:var(--theme-dark)!important}.concierge-id small,.concierge-message p{color:var(--theme-muted)!important}.concierge-step{border-color:var(--theme-border)!important;color:var(--theme-primary)!important;background:var(--theme-surface)!important}
+.concierge-message{background:var(--theme-soft)!important;color:var(--theme-dark)!important}.concierge-message.user{background:var(--theme-primary)!important;color:#fff!important}.concierge-message.user strong{color:#fff!important}
+.concierge-choice,.health-option,.health-priority,.plan-filter{border-color:var(--theme-border)!important;background:var(--theme-surface)!important;color:var(--theme-dark)!important}.concierge-choice.selected,.health-option.selected,.health-priority.selected,.plan-filter.active{border-color:var(--theme-primary)!important;background:var(--theme-soft-2)!important;box-shadow:inset 0 0 0 1px var(--theme-primary)!important}.concierge-choice.selected:after{background:var(--theme-primary)!important}
+.concierge-selected,.concierge-trust,.plan-market-note,.health-privacy-note{background:color-mix(in srgb,var(--theme-page) 82%,white)!important;color:var(--theme-muted)!important}.concierge-chip{background:var(--theme-surface)!important;border-color:var(--theme-border)!important}.concierge-why{border-color:var(--theme-border)!important}.concierge-why summary,.concierge-link-button{color:var(--theme-primary)!important}
+.concierge-input,input,select,textarea{border-color:var(--theme-border)!important}.concierge-input:focus,input:focus,select:focus,textarea:focus{border-color:var(--theme-primary)!important;outline-color:color-mix(in srgb,var(--theme-primary) 18%,transparent)!important}
+
+.company-story-main,.company-promise,.company-trust-grid>div,.company-service-grid article,.profile-medicare-help,.medicare-help-prompt,.medicare-connection-card{border-color:var(--theme-border)!important}.company-promise,.medicare-savings-callout,.plan-current-callout{background:color-mix(in srgb,var(--theme-accent) 45%,white)!important;color:var(--theme-accent-ink)!important}.company-service-grid article span{background:var(--theme-primary)!important}.company-trust-grid>div{background:var(--theme-soft)!important}
+
+.plan-market-hero,.plan-enroll-banner{border-color:var(--theme-primary)!important}.plan-market-hero{background:linear-gradient(135deg,var(--theme-soft),var(--theme-surface))!important}.plan-market-hero .eyebrow,.plan-market-hero h2,.plan-market-head h2,.plan-card h3,.plan-detail-panel h3{color:var(--theme-dark)!important}.plan-market-hero p,.plan-market-head p,.plan-card-sub{color:var(--theme-muted)!important}.plan-card.selected{border-color:var(--theme-primary)!important;background:color-mix(in srgb,var(--theme-soft) 30%,white)!important}.plan-card-type,.plan-match{background:var(--theme-soft)!important;color:var(--theme-primary)!important}.plan-cost,.plan-fit-item{background:color-mix(in srgb,var(--theme-soft) 65%,white)!important}.compare-selected-button,.plan-enroll-banner{background:var(--theme-dark)!important}.plan-enroll-banner .button{background:var(--theme-accent)!important;border-color:var(--theme-accent)!important;color:var(--theme-accent-ink)!important}
+.plan-compare-table th{background:var(--theme-soft)!important;color:var(--theme-dark)!important}.plan-compare-table th:first-child{background:var(--theme-soft-2)!important}.plan-compare-table td:first-child{background:var(--theme-surface)!important}
+.health-progress,.health-stage-count{background:var(--theme-soft)!important;color:var(--theme-primary)!important}.health-summary-item,.health-list-item,.health-review-section,.health-entry-form{border-color:var(--theme-border)!important}.health-ready{background:var(--theme-soft)!important;color:var(--theme-dark)!important}
+
+/* Fixed selector on larger screens. */
+.color-selector{position:fixed;z-index:60;left:14px;top:104px;width:154px;padding:.7rem;border:1px solid var(--theme-border);border-radius:16px;background:color-mix(in srgb,var(--theme-surface) 97%,transparent);box-shadow:0 10px 28px rgba(25,45,38,.12);backdrop-filter:blur(8px)}
+.color-selector-title{display:block;margin:0 0 .55rem;color:var(--theme-dark);font-size:.78rem;font-weight:900;letter-spacing:.03em}.color-options{display:grid;gap:.42rem}.color-option{display:grid;grid-template-columns:28px 1fr;gap:.5rem;align-items:center;min-height:42px;padding:.35rem .45rem;border:1px solid transparent;border-radius:10px;background:transparent;color:var(--theme-dark);font:inherit;font-size:.76rem;font-weight:850;text-align:left;cursor:pointer}.color-option:hover{background:var(--theme-soft)}.color-option.active{border-color:var(--theme-primary);background:var(--theme-soft)}.color-swatch{width:26px;height:26px;border:2px solid rgba(0,0,0,.12);border-radius:50%;box-shadow:inset 0 0 0 5px rgba(255,255,255,.65)}
+.color-option[data-palette="sage"] .color-swatch{background:#315f51}.color-option[data-palette="harbor"] .color-swatch{background:#3f6f8a}.color-option[data-palette="navy-sand"] .color-swatch{background:#4a6279}.color-option[data-palette="plum"] .color-swatch{background:#6e5a78}.color-option[data-palette="teal"] .color-swatch{background:#477577}.color-option[data-palette="terracotta"] .color-swatch{background:#8a6252}
+
+@media(max-width:1280px){.color-selector{position:static;width:min(1040px,calc(100% - 2rem));margin:.6rem auto 0;padding:.5rem .65rem}.color-selector-title{margin:0 0 .4rem}.color-options{grid-template-columns:repeat(6,1fr);gap:.3rem}.color-option{grid-template-columns:24px 1fr;min-height:38px;padding:.25rem .35rem}.color-swatch{width:22px;height:22px}}
+@media(max-width:760px){.color-selector{width:calc(100% - 1rem)}.color-options{grid-template-columns:repeat(3,1fr)}.color-option{font-size:.7rem}}
