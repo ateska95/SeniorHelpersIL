@@ -1,114 +1,92 @@
 # SeniorHelpersIL
 
-Illinois-focused senior help station and member profile MVP.
+Illinois-focused senior help station, concierge, Action Plan, and member profile MVP.
 
 ## Current experience
 
+- Concierge-only interface designed for older adults.
 - Five help areas: Food, Housing, Bills, Money & Benefits, and Healthcare.
-- Three-step journey: choose help, enter routing details, see the Action Plan.
+- Short guided journey: choose help, enter ZIP, answer optional Medicare/Medicaid questions when relevant, review answers, see the Action Plan.
 - Illinois ZIP is the only universal required routing field.
-- Medicare and Medicaid questions appear only for Healthcare.
-- Medicare and Medicaid answers are optional during routing.
-- No urgency questionnaire.
-- No age question before recommendations.
-- Large default type, large tap targets, and a simple Larger text control.
-- Short category descriptions written for fast scanning.
-- One selected help topic is shown at a time by default.
-- Large topic buttons switch between selected help areas.
-- Category-based Action Plan with one clear Start Here step per topic.
-- Secondary recommendations stay collapsed until requested.
-- Profile saving appears after the Action Plan instead of interrupting the answer.
-- Food recommendations distinguish local food access, SNAP, and senior meals.
-- Housing recommendations distinguish local navigation, affordable housing, and legal help.
-- Bills recommendations prioritize utility savings before broader local help.
-- Money & Benefits separates Illinois senior discounts, broader benefit screening, and money management.
-- Healthcare routes Medicare members through Medicare Savings Programs, Extra Help, coverage review, and independent SHIP support.
-- Resource cards use short source labels and identify official or community sources.
-- Action Plan steps can be marked complete without an account.
-- Same-device progress is stored locally.
-- Medicare members receive a savings-first self-service pathway before plan comparison.
-- Human Medicare help remains an optional escalation.
-- Optional member profile. Only a name is required.
-- Optional profile fields for ZIP, birthdate, phone, email, Medicare/Medicaid coverage, Extra Help/LIS, Medicare Savings Programs, current plan, doctors, hospitals, medications, pharmacy, household size, income range, and savings range.
-- Action Plan recommendations can be saved to a profile.
-- Saved programs can be marked Saved, Applied, Completed, or Not interested.
-- Members can email or text their Action Plan using their device's email or messaging app.
-- Medicare contact permission is stored separately from Action Plan sharing.
+- No urgency questionnaire and no age question before recommendations.
+- Large readable controls and plain-language prompts.
+- One primary recommendation is shown first; secondary help stays collapsed.
+- Profile creation comes after useful answers and is optional.
+- Optional member profile. Only a name is required to create it.
+- Human help remains an optional escalation rather than a required step.
 
-## A–F design lab
+## Guided Health Profile
 
-The live site now contains six switchable visual systems using the **Compare design** control in the upper-left corner. The product flow and content stay identical while the design changes.
+Inside **My Profile**, members can choose **Set up my health profile**.
 
-- **A** — editorial, high-contrast nonprofit direction inspired by AARP design principles.
-- **B** — civic, utility-focused direction inspired by Medicare.gov.
-- **C** — warm benefits-navigation direction inspired by BenefitsCheckUp/NCOA.
-- **D** — modern active-aging direction inspired by GetSetUp.
-- **E** — energetic lifestyle direction inspired by SilverSneakers.
-- **F** — custom SeniorHelpersIL hybrid combining calm senior readability with a more distinctive brand feel.
+The Health Profile is intentionally optional and is designed as a future Medicare-comparison preference profile rather than a medical record. Members may complete as much or as little as they want.
 
-`DESIGN_STUDY.md` explains the comparison in more detail. No third-party logos, imagery, or exact layouts are copied.
+The guided flow includes:
+
+1. Current Medicare coverage and optional plan name.
+2. Doctors the member would like to keep.
+3. Prescriptions, with optional dosage, frequency, and quantity.
+4. Preferred pharmacies, including retail or mail-order preference.
+5. Preferred hospitals or health systems.
+6. Coverage priorities such as keeping doctors, lowering prescription costs, total yearly cost, premium, network breadth, dental, vision, hearing, OTC/grocery benefits, transportation, fitness, and travel flexibility.
+7. A review screen with edit links for every section.
+
+Every intake section supports **Skip for now**. Doctors, prescriptions, pharmacies, and hospitals support multiple entries. Progress saves to the member profile as the user goes.
+
+The member profile then shows a compact summary of how many health-profile areas have been added and allows direct editing of any area.
+
+## Medicare comparison direction
+
+The current Health Profile does not rank live Medicare plans. It stores the inputs that would later drive a transparent comparison engine.
+
+The intended future comparison uses the member's current plan as the baseline and considers:
+
+- Doctor and hospital fit.
+- Prescription coverage and estimated drug costs.
+- Pharmacy preference.
+- Premium and expected yearly cost.
+- Network structure.
+- Benefits the member actually values.
+
+Changing plans should only be recommended when the alternative improves the member's situation.
 
 ## Recommendation engine
 
-`resource-engine.js` contains the current recommendation logic and trusted program destinations.
+`resource-engine.js` contains the current Illinois assistance recommendation logic and trusted program destinations.
 
-The engine is intentionally rule-based and transparent. It uses the selected help areas, Illinois ZIP, optional Medicare/Medicaid answers, and saved profile information when available.
+The engine is intentionally rule-based and transparent. It uses selected help areas, Illinois ZIP, optional Medicare/Medicaid answers, and saved profile information when available.
 
-## Competitive direction
+## Product principles
 
-`COMPETITIVE_STRATEGY.md` documents the product comparison against Pocket Protector, eHealth, GoHealth, and Ethos.
-
-The working thesis is simple:
-
-**Help low-income Illinois seniors maximize assistance first. Use Medicare as one tool in the broader Action Plan.**
-
-The site should stay self-service first. Human agent help is an escalation.
-
-## Senior UX principles
-
-The senior-facing experience is designed around a few rules:
-
-- Large readable text by default.
+- Give useful answers before asking for optional personal information.
 - Plain language and short sentences.
 - One decision at a time.
 - One primary action per topic.
-- Results before profile creation.
-- Optional details stay collapsed.
-- No account required to see help.
-
-## Product principle
-
-Give useful answers before asking for optional personal information.
-
-Show one best next step first. Let the member open more choices only when needed.
-
-The profile exists to save progress and improve future recommendations.
+- Optional details stay optional.
+- No account required to see assistance.
+- Help low-income Illinois seniors maximize assistance first; use Medicare as one tool in the broader Action Plan.
 
 ## Main files
 
-- `index.html` — page shell
-- `styles.css` — core design system
-- `action-plan.css` — focused Action Plan layout
-- `competitive-experience.css` — competitive differentiation UI
-- `senior-experience.css` — senior readability and simplified interaction layer
-- `design-lab.css` — six A–F visual systems
-- `resource-engine.js` — recommendation logic
-- `app-v2.js` — application and profile flow
-- `action-plan-ui.js` — simplified category mini-journeys
-- `competitive-experience.js` — source trust, progress, and Medicare pathway
-- `senior-experience.js` — larger-text control, shorter copy, and one-topic-at-a-time behavior
-- `design-lab.js` — persistent A–F design selector
-- `COMPETITIVE_STRATEGY.md` — product benchmark and moat decisions
-- `DESIGN_STUDY.md` — visual benchmark and design comparison
+- `index.html` — page shell and script loading.
+- `styles.css` — core design system.
+- `concierge-app.css` — concierge and Action Plan interface.
+- `health-profile.css` — guided Health Profile interface.
+- `resource-engine.js` — Illinois recommendation logic.
+- `app-concierge.js` — main concierge, Action Plan, profile, and local-storage flow.
+- `health-profile.js` — optional guided current-plan, doctor, drug, pharmacy, hospital, and preference intake.
+- `COMPETITIVE_STRATEGY.md` — product benchmark and differentiation notes.
 
 ## Demo limitations
 
-This is a static front-end prototype using browser `localStorage`. It does not yet provide secure cloud accounts, authentication, cross-device recovery, server-side email/SMS delivery, enrollment integrations, encryption-at-rest, or production consent auditing.
+This is a static front-end prototype using browser `localStorage`. Health-profile information is therefore stored only on the current device in the prototype.
 
-The current Medicare comparison button uses Medicare.gov. A future production build should connect to the brokerage's compliant self-enrollment platform.
+Do not enter Medicare numbers, Social Security numbers, bank information, or other sensitive account identifiers into the demo.
+
+The prototype does not yet provide secure cloud accounts, authentication, cross-device recovery, live provider-network verification, live formulary checks, live plan comparison, enrollment integrations, encryption-at-rest, or production consent auditing.
 
 Before production use, replace browser storage with a secure backend and complete privacy, security, Medicare marketing, telemarketing/SMS, and consumer-health-data compliance review.
 
 ## GitHub Pages
 
-The site runs directly from the repository root using the files listed above.
+The site runs directly from the repository root.
