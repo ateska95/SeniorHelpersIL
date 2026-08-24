@@ -1,5 +1,15 @@
 (function(){
   if(typeof render!=='function'||typeof shell!=='function'||typeof esc!=='function')return;
+
+  const persistentButton=document.querySelector('#compareMedicareButton');
+  if(persistentButton){
+    persistentButton.onclick=()=>{
+      const from=screen||'needs';
+      if(typeof window.openSeniorHelpersPlanCompare==='function')window.openSeniorHelpersPlanCompare(from);
+      else {screen='planCompare';render();}
+    };
+  }
+
   const priorRender=render;
   render=function(){
     if(screen==='planCompare'&&!state.zip){
