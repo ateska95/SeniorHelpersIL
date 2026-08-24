@@ -1,91 +1,121 @@
 # SeniorHelpersIL
 
-Illinois-focused senior help station, concierge, Action Plan, and member profile MVP.
+Illinois-focused senior assistance and Medicare guidance prototype.
+
+## Product idea
+
+SeniorHelpersIL helps older adults solve everyday assistance and Medicare problems in one place.
+
+The working principle is:
+
+**Start with the problem the person is trying to solve. Do not assume an insurance plan change is the answer.**
+
+The consumer experience is concierge-first, plain-language, and optional-data-first.
 
 ## Current experience
 
-- Concierge-only interface designed for older adults.
-- Five help areas: Food, Housing, Bills, Money & Benefits, and Healthcare.
-- Short guided journey: choose help, enter ZIP, answer optional Medicare/Medicaid questions when relevant, review answers, see the Action Plan.
-- Illinois ZIP is the only universal required routing field.
-- No urgency questionnaire and no age question before recommendations.
-- Large readable controls and plain-language prompts.
-- One primary recommendation is shown first; secondary help stays collapsed.
-- Profile creation comes after useful answers and is optional.
-- Optional member profile. Only a name is required to create it.
-- Human help remains an optional escalation rather than a required step.
+### Senior assistance concierge
 
-## Guided Health Profile
+Consumers can ask for help with:
 
-Inside **My Profile**, members can choose **Set up my health profile**.
+- Food
+- Housing
+- Bills
+- Money & Benefits
+- Healthcare
 
-The Health Profile is intentionally optional and is designed as a future Medicare-comparison preference profile rather than a medical record. Members may complete as much or as little as they want.
+The basic Action Plan requires only selected help areas and an Illinois ZIP. Medicare and Medicaid questions appear only when Healthcare is selected.
 
-The guided flow includes:
+No account is required to see an Action Plan.
 
-1. Current Medicare coverage and optional plan name.
-2. Doctors the member would like to keep.
-3. Prescriptions, with optional dosage, frequency, and quantity.
-4. Preferred pharmacies, including retail or mail-order preference.
-5. Preferred hospitals or health systems.
-6. Coverage priorities such as keeping doctors, lowering prescription costs, total yearly cost, premium, network breadth, dental, vision, hearing, OTC/grocery benefits, transportation, fitness, and travel flexibility.
-7. A review screen with edit links for every section.
+### Company story
 
-Every intake section supports **Skip for now**. Doctors, prescriptions, pharmacies, and hospitals support multiple entries. Progress saves to the member profile as the user goes.
+The home experience now explains that SeniorHelpersIL is designed to:
 
-The member profile then shows a compact summary of how many health-profile areas have been added and allows direct editing of any area.
+1. Find everyday Illinois assistance.
+2. Find Medicare-related savings and support programs.
+3. Help consumers prepare for Medicare plan decisions using their own preferences.
 
-## Medicare comparison direction
+Trust principles shown to consumers include:
 
-The current Health Profile does not rank live Medicare plans. It stores the inputs that would later drive a transparent comparison engine.
+- Basic help before profile creation.
+- Keeping the current Medicare plan can be the right outcome.
+- Official Medicare and Illinois resources are prioritized.
 
-The intended future comparison uses the member's current plan as the baseline and considers:
+### Medicare Help Center
 
-- Doctor and hospital fit.
-- Prescription coverage and estimated drug costs.
-- Pharmacy preference.
-- Premium and expected yearly cost.
-- Network structure.
-- Benefits the member actually values.
+The dedicated Medicare Help Center organizes official resources by the problem a consumer is trying to solve.
 
-Changing plans should only be recommended when the alternative improves the member's situation.
+Current topics include:
+
+- Medicare Savings Programs
+- Extra Help with Part D drug costs
+- Medicare + Medicaid / Illinois ABE
+- Illinois SHIP counseling
+- Medicare Prescription Payment Plan
+- Pharmaceutical Assistance Programs
+- Part A and Part B enrollment
+- Claims, appeals, and complaints
+- Illinois Senior Medicare Patrol
+- Medicare Plan Compare
+
+The Help Center also explains useful program relationships, including that qualifying for Medicaid or a Medicare Savings Program generally results in automatic eligibility for Extra Help.
+
+### Health Profile
+
+Members can optionally choose **Set up my health profile**.
+
+The guided setup includes:
+
+1. Current Medicare coverage and plan name
+2. Doctors
+3. Prescriptions
+4. Pharmacies
+5. Hospitals / health systems
+6. Medicare coverage priorities
+7. Review
+
+Every section can be skipped. Consumers may add none, one, or many doctors, prescriptions, pharmacies, or hospitals.
+
+The Health Profile is intended to become the input for future plan comparison. It is not a medical record.
 
 ## Recommendation engine
 
-`resource-engine.js` contains the current Illinois assistance recommendation logic and trusted program destinations.
+`resource-engine.js` contains the rule-based Illinois assistance recommendations.
 
-The engine is intentionally rule-based and transparent. It uses selected help areas, Illinois ZIP, optional Medicare/Medicaid answers, and saved profile information when available.
-
-## Product principles
-
-- Give useful answers before asking for optional personal information.
-- Plain language and short sentences.
-- One decision at a time.
-- One primary action per topic.
-- Optional details stay optional.
-- No account required to see assistance.
-- Help low-income Illinois seniors maximize assistance first; use Medicare as one tool in the broader Action Plan.
+Current recommendations use selected needs, Illinois ZIP, Medicare/Medicaid answers, and saved profile data when available.
 
 ## Main files
 
-- `index.html` — page shell and script loading.
-- `styles.css` — core design system.
-- `concierge-app.css` — concierge and Action Plan interface.
-- `health-profile.css` — guided Health Profile interface.
-- `resource-engine.js` — Illinois recommendation logic.
-- `app-concierge.js` — main concierge, Action Plan, profile, and local-storage flow.
-- `health-profile.js` — optional guided current-plan, doctor, drug, pharmacy, hospital, and preference intake.
-- `COMPETITIVE_STRATEGY.md` — product benchmark and differentiation notes.
+- `index.html` — page shell
+- `styles.css` — base visual system
+- `concierge-app.css` — concierge and Action Plan styling
+- `health-profile.css` — Health Profile setup styling
+- `company-medicare.css` — company story and Medicare Help Center styling
+- `resource-engine.js` — Illinois assistance recommendation logic
+- `app-concierge.js` — main concierge, profile, and Action Plan application
+- `health-profile.js` — optional Medicare comparison-preference profile
+- `company-medicare.js` — company story, Medicare Help Center, and Medicare navigation
+
+## Product direction
+
+SeniorHelpersIL should ultimately connect three layers:
+
+1. **Assistance navigation** — food, housing, bills, benefits, and healthcare help.
+2. **Medicare savings and education** — MSP, Extra Help, Medicaid, prescription help, enrollment, appeals, and counseling.
+3. **Plan comparison and enrollment** — current plan baseline plus doctors, prescriptions, pharmacies, hospitals, costs, and member priorities.
+
+A plan should only be recommended when it improves the member's situation. Keeping existing coverage is a valid recommendation.
 
 ## Demo limitations
 
-This is a static front-end prototype using browser `localStorage`. Health-profile information is therefore stored only on the current device in the prototype.
+This is a static prototype using browser `localStorage`.
 
-Do not enter Medicare numbers, Social Security numbers, bank information, or other sensitive account identifiers into the demo.
+It does not yet provide secure cloud accounts, authentication, cross-device recovery, live plan data, network verification, formulary verification, enrollment integrations, encryption-at-rest, or production consent auditing.
 
-The prototype does not yet provide secure cloud accounts, authentication, cross-device recovery, live provider-network verification, live formulary checks, live plan comparison, enrollment integrations, encryption-at-rest, or production consent auditing.
+Do not enter Medicare numbers, Social Security numbers, banking details, or other account identifiers into the prototype.
 
-Before production use, replace browser storage with a secure backend and complete privacy, security, Medicare marketing, telemarketing/SMS, and consumer-health-data compliance review.
+Before production use, replace browser storage with a secure backend and complete privacy, security, Medicare marketing, telemarketing/SMS, licensing, and consumer-health-data compliance review.
 
 ## GitHub Pages
 
